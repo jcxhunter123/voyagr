@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Voyagr | Advanced AI Travel Profiler</title>
+    <meta name="description" content="Your Personal Travel Profiler">
+    <meta name="keywords" content="Travel Recommendation Analyser">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles-merged.css">
+    <link rel="stylesheet" href="/static/css/style.min.css">
+    <link rel="stylesheet" href="/static/css/custom.css">
+
+    <!--[if lt IE 9]>
+      <script src="/static/js/vendor/html5shiv.min.js"></script>
+      <script src="/static/js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <!-- START: header -->
+  
+  <div class="probootstrap-loader"></div>
+
+  <header role="banner" class="probootstrap-header">
+    <div class="container">
+        <a href="/index" class="probootstrap-logo">Voyagr<span>.</span></a>
+        
+        <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
+        <div class="mobile-menu-overlay"></div>
+
+        <nav role="navigation" class="probootstrap-nav hidden-xs">
+            {% block mainnav %}
+            {% endblock mainnav %}
+          <ul class="probootstrap-right-nav hidden-xs">
+            <li><a href="#"><i class="icon-twitter"></i></a></li>
+            <li><a href="#"><i class="icon-facebook2"></i></a></li>
+            <li><a href="#"><i class="icon-instagram2"></i></a></li>
+          </ul>
+          <div class="extra-text visible-xs"> 
+            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+            <h5>Address</h5>
+            <p>6/F, The Harbourfront Landmark, 11 Wan Hoi Street, Hung Hom</p>
+            <h5>Connect</h5>
+            <ul class="social-buttons">
+              <li><a href="#"><i class="icon-twitter"></i></a></li>
+              <li><a href="#"><i class="icon-facebook2"></i></a></li>
+              <li><a href="#"><i class="icon-instagram2"></i></a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>
+  </header>
+  <!-- END: header -->
+  
+  {% block slider %}
+  {% endblock slider %}
+  <!-- END: slider  -->
+  
+  {% block section1 %}
+  {% endblock section1 %}
+  <!-- END section -->
+  {% block section2 %}
+  {% endblock section2 %}
+  <!-- END section -->
+  
+  {% block section3 %}
+  {% endblock section3 %}
+
+  
+
+  <!-- END section cta -->
+
+  {% block section4 %}
+  {% endblock section4 %}
+  
+  <!-- END section -->
+  
+
+  <footer class="probootstrap-footer probootstrap-bg">
+    <div class="container">
+      <div class="row mb60">
+        <div class="col-md-3">
+          <div class="probootstrap-footer-widget">
+            <h4 class="heading">About Voyagr.</h4>
+            <p> Your ultimate AI travel profiler connected with your preferences and photos on Instagram, recommending not only unique travel destinations, but also the ones suited to you most now.</p>
+            <p><a href="#">Read more...</a></p>
+          </div> 
+        </div>
+        <div class="col-md-3">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h4 class="heading">Quick Links</h4>
+            <ul class="stack-link">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Product</a></li>
+              <li><a href="#">API</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="probootstrap-footer-widget">
+            <h4 class="heading">More Links</h4>
+            <ul class="stack-link">
+              <li><a href="#">Projects</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Support Help</a></li>
+            </ul>
+          </div> 
+        </div>
+        <div class="col-md-3">
+          <div class="probootstrap-footer-widget probootstrap-link-wrap">
+            <h4 class="heading">Subscribe</h4>
+            <p>Get the most updated projects from our team now.</p>
+            <form action="#">
+              <div class="form-field">
+                <input type="text" class="form-control" placeholder="Enter your email">
+                <button class="btn btn-subscribe">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row copyright">
+        <div class="col-md-6">
+          <div class="probootstrap-footer-widget">
+            <p>&copy; 2020 <a href="https://uicookies.com/">voyagr</a>. Created by <a href="https://uicookies.com/">Anthony, Ethan, Lok, and James</a> <br> Photos from <a href="https://unsplash.com/">Unsplash</a></p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="probootstrap-footer-widget right">
+            <ul class="probootstrap-social">
+              <li><a href="#"><i class="icon-twitter"></i></a></li>
+              <li><a href="#"><i class="icon-facebook"></i></a></li>
+              <li><a href="#"><i class="icon-instagram2"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>
+  <script src="/static/js/scripts.min.js"></script>
+  <script src="/static/js/main.min.js"></script>
+  <script src="/static/js/custom.js"></script>
+
+  {% block js %}
+  {% endblock js %}
+  
+  </body>
+</html>

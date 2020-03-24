@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block infotext %}
+<h5 class="info-text">
+        Drop your Instagram username and we will do the job for you. 
+</h5>
+{% endblock infotext %}
+
+{% block content %}
+
+<form class="form-inline" role="form" method="POST" action="">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {% if form.username.errors %}
+            {{ form.username(class="form-control transparent is-invalid") }}
+            <div class="invalid-feedback">
+            {% for error in form.username.errors %}
+                <span> {{error}} </span>
+            {% endfor %}
+            </div>
+        {% else %}
+            {{ form.username(class="form-control transparent", placeholder="Your Username Here..") }} 
+        {% endif %}        
+    </div>
+    <button type="submit" class="btn btn-danger btn-fill">Submit</button>
+    </div>
+</form>
+{% endblock content %}
+                    

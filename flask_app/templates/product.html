@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block mainnav %}
+<ul class="probootstrap-main-nav">
+    <li><a href="/index">Home</a></li>
+    <li class="active"><a href="/product">Product</a></li>
+    <li><a href="/api">API</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+</ul>
+{% endblock mainnav %}
+
+{% block slider %}
+<section class="probootstrap-slider flexslider">
+    <ul class="slides">
+      <li style="background-image: url(/static/img/product5.jpg);">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <div class="slides-text probootstrap-animate">
+                <h3>TRY IT OUT</h3>
+                <p> Drop your Instagram username and we will do the work for you. </p>
+              </div>
+              <div class ='probootstrap-footer'>
+                <form method="POST" action="product">
+                  {{ form.hidden_tag() }}
+                  <div class="form-field">
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control is-invalid", placeholder="Enter your username") }}
+                        <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                            <span> {{error}} </span>
+                        {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-control", placeholder="Enter your username") }} 
+                    {% endif %}     
+                  </div>
+                    <button class="probootstrap-footer btn btn-primary">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+{% endblock slider %}
+
+{% block section1 %}
+<section class="probootstrap-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="service left-icon probootstrap-animate">
+
+            <div class="icon">
+              <i class="icon-laptop3"></i>
+            </div>
+            <div class="text">
+              <h3 class="heading">AI Technology</h3>
+              <p>Our team have built the technology with Google's AutoML Vision framework and trained the Deep Learning Image Classifier model with over 200K images of various travel locations and activities. </p>
+              <p><a href="single-page.html">Learn more</a></p>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service left-icon probootstrap-animate">
+            <div class="icon">
+              <i class="icon-presentation"></i>
+            </div>
+            <div class="text">
+              <h3 class="heading">Travel Analytics</h3>
+              <p>Through the user's existing Instagram profile, we leverage our in-built AI model to aggregate and compute a virtual profile of the user's travel preferences based on their IG photos. </p>
+              <p><a href="single-page.html">Learn more</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service left-icon probootstrap-animate">
+            <div class="icon">
+              <i class="icon-wallet2"></i>
+            </div>
+            <div class="text">
+              <h3 class="heading">Business Strategy</h3>
+              <p> Compiled over 100K worth of travel log data from top travel online companies, such as Tripadvisor, to generate a scoreboard of varios cities, and deliver an AI recommendation system. </p>
+              <p><a href="single-page.html">Learn more</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock section1 %}
