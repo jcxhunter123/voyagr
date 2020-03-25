@@ -1,0 +1,47 @@
+<script src="https://unpkg.com/@tensorflow/tfjs"></script>
+<script src="https://unpkg.com/@tensorflow/tfjs-automl"></script>
+<style>
+    .hidden { display:none;}
+</style>
+<!-- <img id="photo" crossorigin="anonymous" src={{path}}></img> -->
+{% for image in images %}
+    <img src={{image}} class="hidden">
+{% endfor %}
+<form class="modeloutput" action="/predict-result" method="POST" id="myForm">
+    <input id="results" type = "hidden" name ="topic" value ="123" />
+    <input id="username" type = "hidden" name ="username" value = {{username}} />
+</form>
+<script>
+    async function run() {
+        const model = await tf.automl.loadImageClassification('/static/model_js/model.json');
+        var predictions = []
+        //const image = document.getElementById("photo");
+        var image = document.images;
+        var i;
+        for (i=0; i< image.length; i++) {
+            var prediction = await model.classify(image[i]);
+            console.log(prediction);
+            predictions.push(JSON.stringify(prediction, null, 2))
+        }
+        // const predictions = model.classify(image);
+        //return predictions;
+        return predictions;
+    // Show the resulting object on the page.
+    //   const pre = document.createElement('pre');
+    //   pre.textContent = JSON.stringify(predictions, null, 2);
+    //   document.body.append(pre);
+    }
+    // const mainfunc = () => {
+    //     const result = run()
+    //     return result
+    // }
+    (async function main() {
+        const result = await run();
+        document.getElementById("myForm").elements[0].value = result;
+        document.getElementById("myForm").submit();
+        return False;
+    })();
+
+    // document.getElementById("myForm").elements[0].value = result;
+    // document.getElementById("myForm").submit();
+</script>

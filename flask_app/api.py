@@ -3,12 +3,13 @@ from flask_restful import Resource, Api
 import os
 
 
-app = Flask(__name__)
+app = Flask(__name__,static_folder= '/static')
 api = Api(app)
 
 class Igsearch(Resource):
     def get(self, username):
-        # os.system("instagram-scraper "+username)
+        print(username)
+        os.system("instagram-scraper "+username+" -d './static/model_inputs/' -n -t image --profile-metada --media-metadata")
         return {'username':username}
  
 class Questionnaire(Resource):
