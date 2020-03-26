@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from forms import SearchForm, QuestionnaireSlider, QuestionnaireButton
 import requests
-import json
+import jso
 from flask_bootstrap import Bootstrap
 from pathlib import Path
 from os import listdir
