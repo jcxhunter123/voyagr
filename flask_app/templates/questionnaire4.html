@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block mainnav %}
+<ul class="probootstrap-main-nav">
+    <li><a href="/index">Home</a></li>
+    <li class="active"><a href="/product">Product</a></li>
+    <li><a href="/api">API</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+</ul>
+{% endblock mainnav %}
+
+{% block slider %}
+<section class="probootstrap-slider flexslider">
+    <ul class="slides">
+      <li style="background-image: url(/static/img/product5.jpg);">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <div class="slides-text probootstrap-animate">
+                <h4>Do you prefer large cities or small town? </h4>
+                <script>
+                        function outputUpdate(answer) {
+                            document.querySelector('#selected-answer').value=answer;
+                        }
+                </script>
+                <div class='probootstrap-footer'> 
+                    <form class="form-field slidecontainer" role="form" method="POST" action="4">
+                        {{ form.hidden_tag() }}
+                        {{ form.answer(min=0, max=10,value="5", class="slider", oninput="outputUpdate(value)") }}
+                        <output for="answer" id="selected-answer">{{ form.answer.data }}</output>
+                        <button type="submit" class="btn btn-primary">Start rightaway.</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+{% endblock slider %}
+

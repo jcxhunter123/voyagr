@@ -110,8 +110,23 @@ def questionnaire3(username):
         # Read POSTED data FROM server
         dictFromServer = res.json()
         print(dictFromServer)
-        return redirect(url_for('predict', username=username, form=form))
+        return redirect(url_for('questionnaire4', username=username, form=form))
     return render_template('questionnaire3.html', form = form)
+
+# Question 4 - Sliders
+@app.route("/search/<username>/questionnaire/4", methods=['GET', 'POST'])
+def questionnaire4(username):
+    form = QuestionnaireSlider()
+    if form.validate_on_submit():
+        # Post form data TO server
+        dictToSend = {"question4":form.answer.data}
+        res = requests.post('http://127.0.0.1:5000/questionnaire/answer', json=dictToSend)
+        # Read POSTED data FROM server
+        dictFromServer = res.json()
+        #print(dictFromServer)
+        return redirect(url_for('predict', username=username, form=form))
+    return render_template('questionnaire4.html',form=form)
+
 
 # Please wait page for model predictions
 # @app.route("/search/<username>/pleasewait", methods=['GET', 'POST'])
@@ -134,13 +149,13 @@ def predict(username):
 def predict_result():
     if request.method == 'POST':
         predictions,prdns = [],[]
-        #print(request.form.to_dict())
 
-        result_str = request.form.to_dict()['topic']
-        
-        #photos = request.form.to_dict()['inputs']
+        # Get Username and images path
         username = request.form.to_dict()['username']
         images = extract_img_path(username)
+        
+        # Process predictions from request
+        result_str = request.form.to_dict()['topic']
         results = ast.literal_eval(result_str)
         for result in results:
             d = {l['label']:l['prob'] for l in result}
@@ -148,7 +163,9 @@ def predict_result():
             top = max(d, key=d.get)
             top_prob = d.get(top)
             prdns.append((top,top_prob))
+        result_dict = [{'image':img,'predictions':prd} for img,prd in zip(images,prdns)]
 
+        # Classification of prediction reseult and return a ratio matrix
         COUNT = {'Food':0,'Outdoor':0,'Arts':0,'Citylife':0,'Sights':0}
         for prediction in [i for i,j in prdns]:
             if prediction in ("Art Gallery",'Artwork','Contemp_Architectural','Church','Concert'):
@@ -161,8 +178,13 @@ def predict_result():
                 COUNT['Citylife'] += 1
             elif prediction == "Sights":
                 COUNT['Sights'] += 1
-    return render_template('predict-result.html',d=prdns,images=images,count=COUNT)#, top=top, top_prob=top_prob)
+    return render_template('predict-result.html',results=result_dict,count=COUNT,username=username)#, top=top, top_prob=top_prob)
 
+
+@app.route("/search/<username>/results", methods=["POST", "GET"])
+def predict(username):
+    paths = extract_img_path(username)
+    return render_template('predict.html',images=paths,username=username)
 # END PRODUCT PAGE ------------------------------------------------------------------------------------------------------------------------------
 
 # API PAGE
