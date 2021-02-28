@@ -1,3 +1,10 @@
+def testing(df,category):
+    # Split
+    outdoor_nature_adv = df[df.main_category =='Outdoor, Nature & Adventures']
+    arts_culture = df[df.main_category =='Arts & Culture']
+    shopping = df[df.main_category =='Shopping']
+    mustsee_historic_sites = df[df.main_category =='Must-see & Historic Sites']
+    other_hobbies
 
 
 #Preprocessing
